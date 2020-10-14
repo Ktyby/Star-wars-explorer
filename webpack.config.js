@@ -1,21 +1,53 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: "./src/index.js",
-  module: {
-    rules: [
-      { test: /\.css$/, use: ["style-loader", "css-loader"] },
-      { test: /\.(js)$/, use: "babel-loader" }
-    ]
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "index_bundle.js"
-  },
-  plugins: [
-    new HtmlWebpackPlugin()
-  ],
-  mode: process.env.NODE_ENV === "production" ? "production" : "development"
-}
+	entry: './src/index.js',
+	output: {
+		path: path.join(__dirname, '/dist'),
+		publicPath: '/',
+		filename: 'index.bundle.js',
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(js$|jsx$)/,
+				exclude: /node_modules/,
+				use: ['babel-loader'],
+			},
+			{
+				test: /\.css/,
+				use: [
+					{
+						loader: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: {
+								mode: 'local',
+								localIdentName: '[name]__[local]',
+								context: path.resolve(__dirname, 'src'),
+							},
+						},
+					},
+				],
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,
+				use: ['file-loader'],
+			},
+		],
+	},
+	resolve: {
+		extensions: ['.js', '.jsx'],
+	},
+	plugins: [
+		new HTMLWebpackPlugin({
+			template: './src/index.html',
+		}),
+	],
+	devServer: {
+		historyApiFallback: true,
+	},
+};
