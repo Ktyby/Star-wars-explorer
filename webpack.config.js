@@ -17,26 +17,16 @@ module.exports = {
 			},
 			{
 				test: /\.css/,
-				use: [
-					{
-						loader: 'style-loader',
-					},
-					{
-						loader: 'css-loader',
-						options: {
-							modules: {
-								mode: 'local',
-								localIdentName: '[name]__[local]',
-								context: path.resolve(__dirname, 'src'),
-							},
-						},
-					},
-				],
+				use: [ 'style-loader', 'css-loader' ]
 			},
 			{
-				test: /\.(woff|woff2|eot|ttf|otf)$/,
-				use: ['file-loader'],
-			},
+				test: /\.(png|jpe?g|gif)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+					},
+				],
+		 },
 		],
 	},
 	resolve: {
