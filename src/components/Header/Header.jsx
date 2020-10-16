@@ -1,4 +1,6 @@
 import React from "react";
+import axios from "axios";
+import getData from "../../store/actions/getData";
 import logo from "./img/logo.png";
 import "./Header.css";
 
@@ -10,9 +12,15 @@ class Header extends React.Component {
     }
   }
 
-  handleSquareClick = (selectedSection) => {
+  handleButtonClick = (selectedSection) => {
     this.setState({
       section: selectedSection
+    });
+    
+    axios.get(`https://swapi.dev/api/${selectedSection}/`).then((response) => {
+      getData(response.data.results);
+    }).catch((error) => {
+      console.log(error);
     });
   }
 
