@@ -1,19 +1,11 @@
 import React from "react";
-import axios from "axios";
-import getData from "../../store/actions/getData";
+import { connect } from "react-redux";
 import "./Entities.css";
 
 class Entities extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  componentDidMount() {
-    axios.get(`https://swapi.dev/api/people/`).then((response) => {
-      getData(response.data.results);
-    }).catch((error) => {
-      console.log(error);
-    });
+    
   }
 
   render() {
@@ -28,4 +20,16 @@ class Entities extends React.Component {
   }
 }
 
-export default Entities;
+const mapStateToProps = (state) => {
+  return {
+
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Entities);

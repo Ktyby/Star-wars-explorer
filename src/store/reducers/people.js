@@ -1,7 +1,7 @@
 import initialState from "../initialState";
 import { START_DATA } from "../constants/index";
 
-const startData = (state = initialState, action) => {
+const people = (state = initialState, action) => {
   switch (action.type) {
     case START_DATA:
       return action.payload;
@@ -10,4 +10,4 @@ const startData = (state = initialState, action) => {
   }
 }
 
-export default startData;
+export default people;

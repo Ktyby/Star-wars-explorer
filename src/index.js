@@ -1,15 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
 import initialState from './store/initialState';
 import App from "./components/App";
+import configureStore from "./store/configureStore";
 
-const rootReducer = (state = initialState) => {
-  return state;
-}
-
-const store = createStore(rootReducer);
+const store = configureStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>
