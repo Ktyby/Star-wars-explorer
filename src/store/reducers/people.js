@@ -1,9 +1,10 @@
 import initialState from "../initialState";
-import { START_DATA } from "../constants/index";
+import { SET_DATA } from "../constants/index";
 
 const people = (state = initialState, action) => {
+  console.log(state)
   switch (action.type) {
-    case START_DATA:
+    case SET_DATA:
       return action.payload;
     default:
       return state;
