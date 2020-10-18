@@ -1,20 +1,13 @@
-import React from "react";
 import { connect } from "react-redux";
 import Entities from "./Entities";
+import setData from "../../store/actions/setData";
 
-class EntitiesContainer extends React.Component {
-  render() {
-    return (
-      <Entities data={this.props.people}/>
-    );
-  }
-}
+const mapStateToProps = (state) => ({
+  people: state.people
+});
 
-const mapStateToProps = (state) => {
-  console.log({ people: state.Entities.people })
-  return {
-    people: state.Entities.people
-  };
-}
+const mapDispatchToProps = (dispatch) => ({
+	setData: (data) => dispatch(setData(data)),
+});
 
-export default connect(mapStateToProps)(EntitiesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Entities);
