@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./Entities.css";
+import Tile from "../Tile";
 
 class Entities extends React.Component {
   constructor(props) {
@@ -15,8 +16,10 @@ class Entities extends React.Component {
     });
   }
 
-  renderEntitiesItem = () => {
-
+  renderTiles = () => {
+    return this.props.people.map((element, index) => {
+      return <Tile name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
+    });
   }
 
   render() {
@@ -24,7 +27,7 @@ class Entities extends React.Component {
       <section className="entities">
         <div className="entities__wrapper">
           <ul className="entities__list">
-            {this.renderEntitiesItem()}
+            {this.renderTiles()}
           </ul>
         </div>
       </section>

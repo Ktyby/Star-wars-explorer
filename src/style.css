@@ -1,0 +1,23 @@
+@font-face {
+	font-family: "SF Distant Galaxy";
+	src: url("./fonts/SF Distant Galaxy.woff2") format("woff2"),
+				url("./fonts/SF Distant Galaxy.woff") format("woff");
+	font-display: swap;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+	font-size: 16px;
+	line-height: 1.576;
+	color: #000;
+
+  background-color: #1E1E1E;
+}
+
+a {
+	text-decoration: none;
+}

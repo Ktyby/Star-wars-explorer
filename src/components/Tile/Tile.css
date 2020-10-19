@@ -1,0 +1,16 @@
+.entities__item {
+  width: 230px;
+  height: 330px;
+
+  margin: 20px;
+
+  font-size: 16px;
+
+  background-color: #FFBA00;
+
+  transition: .2s;
+}
+
+.entities__item:hover {
+  background-color: #FFF;
+}
