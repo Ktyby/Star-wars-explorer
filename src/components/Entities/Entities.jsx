@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import setData from "../../store/actions/setData";
 import "./Entities.css";
 
 class Entities extends React.Component {
@@ -10,14 +9,14 @@ class Entities extends React.Component {
 
   componentDidMount() {
     axios.get(`https://swapi.dev/api/people/`).then((response) => {
-      setData(response.data.results);
+      this.props.setPeopleData(response.data.results);
     }).catch((error) => {
-      console.log(error);
+      console.log(error); 
     });
   }
 
   renderEntitiesItem = () => {
-    console.log();
+
   }
 
   render() {

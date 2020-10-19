@@ -48,9 +48,10 @@ body {
 
   cursor: pointer;
 
-  transition: .1s;
+  transition: .2s;
 }
 
 .header__item-button:hover {
-  border: 3px solid #FFBA00;
+  background: #FFBA00;
+  color: black;
 }

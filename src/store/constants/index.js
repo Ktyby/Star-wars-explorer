@@ -1,1 +1,1 @@
-export const SET_DATA = "SET_DATA";
+export const SET_PEOPLE_DATA = "SET_PEOPLE_DATA";
