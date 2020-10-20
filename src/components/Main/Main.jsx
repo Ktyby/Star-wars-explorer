@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import EntitiesPeople from "../EntitiesPeople";
 import EntitiesPlanets from "../EntitiesPlanets";
 import EntitiesStarships from "../EntitiesStarships";
-import Header from "../Header";
 
 const Main = () => {
   return (

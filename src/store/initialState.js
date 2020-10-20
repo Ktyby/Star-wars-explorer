@@ -1,3 +1,11 @@
 export default {
-  people: []
+  people: {
+    data: []
+  },
+  planets: {
+    data: []
+  },
+  starships: {
+    data: []
+  }
 }

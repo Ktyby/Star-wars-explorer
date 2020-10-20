@@ -1,10 +1,12 @@
 import initialState from "../initialState";
-import { SET_PEOPLE_DATA } from "../constants";
+import { LOAD_PEOPLE_DATA_SUCCESS } from "../constants";
 
 const people = (state = initialState.people, action) => {
   switch (action.type) {
-    case SET_PEOPLE_DATA:
-      return action.payload;
+    case LOAD_PEOPLE_DATA_SUCCESS:
+      return { ...state,
+        data: action.payload
+      };
     default:
       return state;
   }

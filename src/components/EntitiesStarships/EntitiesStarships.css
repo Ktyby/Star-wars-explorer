@@ -1,0 +1,26 @@
+.entities {
+  background-color: #1E1E1E;
+
+  padding-bottom: 40px;
+}
+
+.entities__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 1200px;
+  padding-top: 30px;
+
+  margin: 0 auto;
+}
+
+.entities__list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  list-style: none;
+
+  padding: 0;
+}
