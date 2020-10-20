@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./Entities.css";
 import Tile from "../Tile";
+import propTypes from "./propTypes";
 
 class Entities extends React.Component {
   constructor(props) {
@@ -34,5 +35,7 @@ class Entities extends React.Component {
     );
   }
 }
+
+Entities.propTypes = propTypes;
 
 export default Entities;

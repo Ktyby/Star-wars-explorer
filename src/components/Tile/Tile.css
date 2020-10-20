@@ -1,10 +1,11 @@
 .entities__item {
-  width: 230px;
+  width: 210px;
   height: 330px;
 
-  margin: 20px;
+  margin-bottom: 40px;
 
   font-size: 16px;
+  text-transform: uppercase;
 
   background-color: #FFBA00;
 
