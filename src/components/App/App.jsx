@@ -1,16 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Header from "../Header";
-import EntitiesContainer from "../Entities";
+import Main from "../Main";
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
-      <main>
-        <EntitiesContainer />
-      </main>
-    </Router>
+      <Main />
+    </BrowserRouter>
   );
 };
 

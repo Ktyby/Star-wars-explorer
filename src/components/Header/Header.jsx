@@ -2,20 +2,14 @@ import React from "react";
 import axios from "axios";
 import logo from "./img/logo.png";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      section: "people",
-    }
   }
 
   handleButtonClick = (selectedSection) => {
-    this.setState({
-      section: selectedSection
-    });
-
     axios.get(`https://swapi.dev/api/${selectedSection}/`).then((response) => {
       response.data.results;
     }).catch((error) => {
@@ -30,13 +24,13 @@ class Header extends React.Component {
           <img className="header__logo" src={logo} alt="Logo"/>
           <ul className="header__list">
             <li className="header__item" key="people">
-              <button className="header__item-button" onClick={() => this.handleButtonClick("people")}>People</button>
+              <Link to='/people' className="header__item-link" onClick={() => this.handleButtonClick("people")}>People</Link>
             </li>
             <li className="header__item" key="planets">
-              <button className="header__item-button" onClick={() => this.handleButtonClick("planets")}>Planets</button>
+              <Link to='/planets' className="header__item-link" onClick={() => this.handleButtonClick("planets")}>Planets</Link>
             </li>
             <li className="header__item" key="starships">
-              <button className="header__item-button" onClick={() => this.handleButtonClick("starships")}>Starships</button>
+              <Link to='/starships' className="header__item-link" onClick={() => this.handleButtonClick("starships")}>Starships</Link>
             </li>
           </ul>
         </div>
