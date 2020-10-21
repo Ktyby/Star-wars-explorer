@@ -1,5 +1,5 @@
 import React from "react";
-import Tile from "../Tile";
+import TilePeople from "../TilePeople";
 import "./EntitiesPeople.css";
 
 class EntitiesPeople extends React.Component {
@@ -13,7 +13,7 @@ class EntitiesPeople extends React.Component {
 
   renderTiles = () => {
     return this.props.people.map((element, index) => {
-      return <Tile name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
+      return <TilePeople name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
     });
   }
 

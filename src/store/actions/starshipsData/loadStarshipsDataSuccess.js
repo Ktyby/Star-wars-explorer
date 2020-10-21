@@ -1,8 +1,8 @@
-import { LOAD_STARSHIPS_DATA } from "../../constants";
+import { LOAD_STARSHIPS_DATA_SUCCESS } from "../../constants";
 
-const loadStarshipsData = (data) => ({
-  type: LOAD_STARSHIPS_DATA,
+const loadStarshipsDataSuccess = (data) => ({
+  type: LOAD_STARSHIPS_DATA_SUCCESS,
   payload: data,
 });  
 
-export default loadStarshipsData;
+export default loadStarshipsDataSuccess;

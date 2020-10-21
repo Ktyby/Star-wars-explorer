@@ -1,7 +1,20 @@
 @font-face {
-	font-family: "SF Distant Galaxy";
-	src: url("./fonts/SF Distant Galaxy.woff2") format("woff2"),
-				url("./fonts/SF Distant Galaxy.woff") format("woff");
+	font-family: "New Zelek";
+	src: url("./fonts/New_Zelek.woff") format("woff");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "MuseoSansDisplay-Light";
+	src: 	url("./fonts/MuseoSansDisplay-Light.woff2") format("woff2"),
+				url("./fonts//MuseoSansDisplay-Light.woff") format("woff");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "MuseoSansDisplay-Black";
+	src: 	url("./fonts/MuseoSansDisplay-Black.woff2") format("woff2"),
+				url("./fonts//MuseoSansDisplay-Black.woff") format("woff");
 	font-display: swap;
 }
 
@@ -9,8 +22,8 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: "Arial", sans-serif;
-  font-weight: bold;
+	font-family: "New Zelek", "Arial", sans-serif;
+	font-weight: bold;
 	font-size: 16px;
 	line-height: 1.576;
 	color: #000;

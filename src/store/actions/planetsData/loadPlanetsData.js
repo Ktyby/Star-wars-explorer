@@ -1,8 +1,7 @@
 import { LOAD_PLANETS_DATA } from "../../constants";
 
-const loadPlanetsData = (data) => ({
+const loadPlanetsData = () => ({
   type: LOAD_PLANETS_DATA,
-  payload: data,
 });  
 
 export default loadPlanetsData;

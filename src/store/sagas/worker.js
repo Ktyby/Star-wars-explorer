@@ -2,6 +2,10 @@ import axios from "axios";
 import { put, call } from "redux-saga/effects";
 import loadPeopleDataFailed from "../actions/peopleData/loadPeopleDataFailed";
 import loadPeopleDataSuccess from "../actions/peopleData/loadPeopleDataSuccess";
+import loadPlanetsDataFailed from "../actions/planetsData/loadPlanetsDataFailed";
+import loadPlanetsDataSuccess from "../actions/planetsData/loadPlanetsDataSuccess";
+import loadStarshipsDataFailed from "../actions/starshipsData/loadStarshipsDataFailed";
+import loadStarshipsDataSuccess from "../actions/starshipsData/loadStarshipsDataSuccess";
 
 export function* loadPeopleData() {
   try {

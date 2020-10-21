@@ -1,6 +1,7 @@
 import React from "react";
-import Tile from "../Tile";
+import TileStarship from "../TileStarship";
 import "./EntitiesStarships.css";
+import convertNumberInToString from "../utils/convertNumberInToString";
 
 class EntitiesStarships extends React.Component {
   constructor(props) {
@@ -10,10 +11,23 @@ class EntitiesStarships extends React.Component {
   componentDidMount() {
     this.props.loadStarshipsData();
   }
+  
+  convertToNumber = (value) => {
+    if (value.includes(",")) {
+      return +(value.split(",").join(""));
+    }
+
+    return value || +value;
+  }
 
   renderTiles = () => {
     return this.props.starships.map((element, index) => {
-      return <Tile name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
+      return <TileStarship 
+        name={element.name} 
+        cost={convertNumberInToString(element.cost_in_credits)} 
+        passengers={convertNumberInToString(this.convertToNumber(element.passengers))}
+        key={index}
+      />
     });
   }
 

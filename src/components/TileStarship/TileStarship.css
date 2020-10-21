@@ -1,0 +1,49 @@
+.entities__item {
+  width: 210px;
+  height: 300px;
+
+  margin-bottom: 40px;
+
+  font-size: 14px;
+  text-transform: uppercase;
+
+  background-color: #FFBA00;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.entities__item:hover {
+  background-color: #FFF;
+}
+
+.entities__initials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 20px 0 50px 48px;
+  
+  width: 100px;
+  height: 100px;
+
+  font-family: "New Zelek", "Arial", sans-serif;
+  font-size: 40px;
+
+  border: 3px solid black;
+  border-radius: 50%;
+}
+
+.entities__paragraph {
+  margin: 0;
+  font-family: "MuseoSansDisplay-Black", "Arial", sans-serif;
+  text-align: center;
+}
+
+.entities__paragraph span {
+  font-family: "MuseoSansDisplay-Light", "Arial", sans-serif;
+}
+
+

@@ -1,8 +1,8 @@
 import { LOAD_PLANETS_DATA_FAILED } from "../../constants";
 
-const loadPlanetsDataFailed = (data) => ({
+const loadPlanetsDataFailed = (error) => ({
   type: LOAD_PLANETS_DATA_FAILED,
-  payload: data,
+  payload: error,
 });  
 
 export default loadPlanetsDataFailed;

@@ -8,12 +8,12 @@
 
 .header::after {
   display: block;
-  width: 100vw;
+  width: 100%;
 
   border: 1px solid #FFBA00;
 
   content: "";
-  top: 139px;
+  top: 149px;
 
   position: absolute;
 }
@@ -30,8 +30,8 @@
 }
 
 .header__logo {
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
 }
 
 .header__list {

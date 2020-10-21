@@ -1,6 +1,7 @@
 import React from "react";
-import Tile from "../Tile";
+import TilePlanet from "../TilePlanet";
 import "./EntitiesPlanets.css";
+import convertNumberInToString from "../utils/convertNumberInToString";
 
 class EntitiesPlanets extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class EntitiesPlanets extends React.Component {
 
   renderTiles = () => {
     return this.props.planets.map((element, index) => {
-      return <Tile name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
+      return <TilePlanet name={element.name} population={convertNumberInToString(element.population)} key={index}/>
     });
   }
 
