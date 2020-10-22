@@ -5,6 +5,10 @@ import "./EntitiesPeople.css";
 class EntitiesPeople extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      data: null,
+    }
   }
 
   componentDidMount() {
@@ -25,7 +29,7 @@ class EntitiesPeople extends React.Component {
             {this.renderTiles()}
           </ul>
         </div>
-        <button className="entities__load-button">Load More</button>
+        <button className="entities__load-button" onClick={() => this.props.morePeople}>Load More</button>
       </section>
     );
   }
