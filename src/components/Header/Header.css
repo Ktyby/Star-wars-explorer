@@ -4,6 +4,8 @@
   background-color: #212121;
 
   position: relative;
+
+  overflow: hidden;
 }
 
 .header::after {

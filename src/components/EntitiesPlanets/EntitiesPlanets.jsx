@@ -26,6 +26,7 @@ class EntitiesPlanets extends React.Component {
             {this.renderTiles()}
           </ul>
         </div>
+        <button className="entities__load-button">Load More</button>
       </section>
     );
   }
