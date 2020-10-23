@@ -1,34 +1,14 @@
 .header {
-  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 200px 40px 200px;
 
   background-color: #212121;
+  border-bottom: 2px solid #FFBA00;
 
   position: relative;
 
   overflow: hidden;
-}
-
-.header::after {
-  display: block;
-  width: 100%;
-
-  border: 1px solid #FFBA00;
-
-  content: "";
-  top: 149px;
-
-  position: absolute;
-}
-
-.header__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 1200px;
-  padding-top: 30px;
-
-  margin: 0 auto;
 }
 
 .header__logo {

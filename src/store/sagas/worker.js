@@ -15,7 +15,7 @@ import loadMoreStarshipsDataSuccess from "../actions/moreStarshipsData/loadMoreS
 
 export function* loadPeopleData() {
   try {
-    const data = yield call(() => axios.get(`https://swapi.dev/api/people/?page=1`).then((response) => response.data.results));
+    const data = yield call(() => axios.get(`https://swapi.dev/api/people/?page=1`).then((response) => response.data));
     yield put(loadPeopleDataSuccess(data)); 
   } catch (error) {
     yield put(loadPeopleDataFailed(error))
@@ -24,7 +24,7 @@ export function* loadPeopleData() {
 
 export function* loadPlanetsData() {
   try {
-    const data = yield call(() => axios.get(`https://swapi.dev/api/planets/?page=1`).then((response) => response.data.results));
+    const data = yield call(() => axios.get(`https://swapi.dev/api/planets/?page=1`).then((response) => response.data));
     yield put(loadPlanetsDataSuccess(data)); 
   } catch (error) {
     yield put(loadPlanetsDataFailed(error))
@@ -33,7 +33,7 @@ export function* loadPlanetsData() {
 
 export function* loadStarshipsData() {
   try {
-    const data = yield call(() => axios.get(`https://swapi.dev/api/starships/?page=1`).then((response) => response.data.results));
+    const data = yield call(() => axios.get(`https://swapi.dev/api/starships/?page=1`).then((response) => response.data));
     yield put(loadStarshipsDataSuccess(data)); 
   } catch (error) {
     yield put(loadStarshipsDataFailed(error))
@@ -42,7 +42,7 @@ export function* loadStarshipsData() {
 
 export function* loadMorePeopleData(action) {
   try {
-    const data = yield call(() => axios.get(`https://swapi.dev/api/people/?page=${action.page || 1}`).then((response) => response.data.results));
+    const data = yield call(() => axios.get(action.page).then((response) => response.data));
     yield put(loadMorePeopleDataSuccess(data)); 
   } catch (error) {
     yield put(loadMorePeopleDataFailed(error))
@@ -51,7 +51,7 @@ export function* loadMorePeopleData(action) {
 
 export function* loadMorePlanetsData(action) {
   try {
-    const data = yield call(() => axios.get(`https://swapi.dev/api/planets/?page=${action.page}`).then((response) => response.data.results));
+    const data = yield call(() => axios.get(action.page).then((response) => response.data));
     yield put(loadMorePlanetsDataSuccess(data)); 
   } catch (error) {
     yield put(loadMorePlanetsDataFailed(error))
@@ -59,8 +59,9 @@ export function* loadMorePlanetsData(action) {
 } 
 
 export function* loadMoreStarshipsData(action) {
+  console.log(action.page);
   try {
-    const data = yield call(() => axios.get(`https://swapi.dev/api/starships/?page=${action.page}`).then((response) => response.data.results));
+    const data = yield call(() => axios.get(action.page).then((response) => response.data));
     yield put(loadMoreStarshipsDataSuccess(data)); 
   } catch (error) {
     yield put(loadMoreStarshipsDataFailed(error))

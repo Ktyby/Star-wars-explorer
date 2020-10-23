@@ -5,10 +5,6 @@ import "./EntitiesPeople.css";
 class EntitiesPeople extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      data: null,
-    }
   }
 
   componentDidMount() {
@@ -16,6 +12,7 @@ class EntitiesPeople extends React.Component {
   }
 
   renderTiles = () => {
+    console.log(this.props.people);
     return this.props.people.map((element, index) => {
       return <TilePeople name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
     });
@@ -24,12 +21,10 @@ class EntitiesPeople extends React.Component {
   render() {
     return (
       <section className="entities">
-        <div className="entities__wrapper">
-          <ul className="entities__list">
-            {this.renderTiles()}
-          </ul>
-        </div>
-        <button className="entities__load-button" onClick={() => this.props.morePeople}>Load More</button>
+        <ul className="entities__list">
+          {this.renderTiles()}
+        </ul>
+        <button className="entities__load-button" onClick={() => this.props.loadMorePeopleData()}>Load More</button>
       </section>
     );
   }

@@ -1,18 +1,7 @@
 .entities {
+  padding: 30px 150px 30px 150px;
+
   background-color: #1E1E1E;
-
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.entities__wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 1200px;
-
-  margin: 0 auto;
 }
 
 .entities__list {

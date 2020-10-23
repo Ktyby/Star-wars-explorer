@@ -34,12 +34,10 @@ class EntitiesStarships extends React.Component {
   render() {
     return (
       <section className="entities">
-        <div className="entities__wrapper">
-          <ul className="entities__list">
-            {this.renderTiles()}
-          </ul>
-        </div>
-        <button className="entities__load-button">Load More</button>
+        <ul className="entities__list">
+          {this.renderTiles()}
+        </ul>
+        <button className="entities__load-button" onClick={() => this.props.loadMoreStarshipsData()}>Load More</button>
       </section>
     );
   }

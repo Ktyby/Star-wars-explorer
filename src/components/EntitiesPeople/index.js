@@ -5,7 +5,6 @@ import loadMorePeopleData from "../../store/actions/morePeopleData/loadMorePeopl
 
 const mapStateToProps = (state) => ({
   people: state.people.data,
-  morePeople: state.morePeople.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
