@@ -10,7 +10,8 @@ const planets = (state = initialState.planets, action) => {
     case LOAD_MORE_PLANETS_DATA_SUCCESS:
       return {
         ...state,
-        data: state.data.results.concat(action.payload)
+        data: state.data.concat(action.payload),
+        nextPage: action.nextPage
       };
     default:
       return state;

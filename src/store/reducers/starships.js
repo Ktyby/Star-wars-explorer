@@ -10,7 +10,8 @@ const starships = (state = initialState.starships, action) => {
     case LOAD_MORE_STARSHIPS_DATA_SUCCESS:
       return { 
         ...state,
-        data: state.data.results.concat(action.payload)
+        data: state.data.concat(action.payload),
+        nextPage: action.nextPage
       };
     default:
       return state;

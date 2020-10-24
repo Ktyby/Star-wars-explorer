@@ -19,6 +19,16 @@ class EntitiesPlanets extends React.Component {
   }
 
   render() {
+    if (this.props.nextPage === null) {
+      return (
+        <section className="entities">
+          <ul className="entities__list">
+            {this.renderTiles()}
+          </ul>
+        </section>
+      );
+    }
+    
     return (
       <section className="entities">
         <ul className="entities__list">

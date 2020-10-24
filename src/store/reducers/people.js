@@ -10,7 +10,8 @@ const people = (state = initialState.people, action) => {
     case LOAD_MORE_PEOPLE_DATA_SUCCESS:
       return {
         ...state,
-        data: state.data.concat(action.payload)
+        data: state.data.concat(action.payload),
+        nextPage: action.nextPage
       };
     default:
       return state;

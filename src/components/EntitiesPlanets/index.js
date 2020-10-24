@@ -5,6 +5,7 @@ import loadMorePlanetsData from "../../store/actions/morePlanetsData/loadMorePla
 
 const mapStateToProps = (state) => ({
   planets: state.planets.data,
+  nextPage: state.planets.nextPage
 });
 
 const mapDispatchToProps = (dispatch) => ({

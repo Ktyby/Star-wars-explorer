@@ -12,13 +12,22 @@ class EntitiesPeople extends React.Component {
   }
 
   renderTiles = () => {
-    console.log(this.props.people);
     return this.props.people.map((element, index) => {
       return <TilePeople name={element.name} birthYear={element.birth_year} gender={element.gender} key={index}/>
     });
   }
 
   render() {
+    if (this.props.nextPage === null) {
+      return (
+        <section className="entities">
+          <ul className="entities__list">
+            {this.renderTiles()}
+          </ul>
+        </section>
+      );
+    }
+
     return (
       <section className="entities">
         <ul className="entities__list">

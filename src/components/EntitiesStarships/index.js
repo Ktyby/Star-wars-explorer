@@ -5,6 +5,7 @@ import loadMoreStarshipsData from "../../store/actions/moreStarshipsData/loadMor
 
 const mapStateToProps = (state) => ({
   starships: state.starships.data,
+  nextPage: state.starships.nextPage
 });
 
 const mapDispatchToProps = (dispatch) => ({
