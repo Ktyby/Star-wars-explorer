@@ -18,22 +18,12 @@ class EntitiesPeople extends React.Component {
   }
 
   render() {
-    if (this.props.nextPage === null) {
-      return (
-        <section className="entities">
-          <ul className="entities__list">
-            {this.renderTiles()}
-          </ul>
-        </section>
-      );
-    }
-
     return (
       <section className="entities">
         <ul className="entities__list">
           {this.renderTiles()}
         </ul>
-        <button className="entities__load-button" onClick={() => this.props.loadMorePeopleData()}>Load More</button>
+        {this.props.nextPage === null || <button className="entities__load-button" onClick={() => this.props.loadMorePeopleData()}>Load More</button>}
       </section>
     );
   }
