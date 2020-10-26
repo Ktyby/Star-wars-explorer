@@ -3,7 +3,7 @@ import logo from "./img/logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
   constructor(props) {
     super(props)
   }

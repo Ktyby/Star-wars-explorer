@@ -5,7 +5,8 @@ import {
   LOAD_STARSHIPS_DATA,
   LOAD_MORE_PEOPLE_DATA,
   LOAD_MORE_PLANETS_DATA,
-  LOAD_MORE_STARSHIPS_DATA
+  LOAD_MORE_STARSHIPS_DATA,
+  LOAD_PEOPLE_TILES_DATA
 } from "../constants/index";
 
 import {
@@ -14,7 +15,8 @@ import {
   loadStarshipsData,
   loadMorePeopleData,
   loadMorePlanetsData,
-  loadMoreStarshipsData
+  loadMoreStarshipsData,
+  loadPeopleTilesData
 } from "./worker";
 
 export function* mainSaga() {
@@ -24,4 +26,5 @@ export function* mainSaga() {
   yield takeEvery(LOAD_MORE_PEOPLE_DATA, loadMorePeopleData);
   yield takeEvery(LOAD_MORE_PLANETS_DATA, loadMorePlanetsData);
   yield takeEvery(LOAD_MORE_STARSHIPS_DATA, loadMoreStarshipsData);
+  yield takeEvery(LOAD_PEOPLE_TILES_DATA, loadPeopleTilesData);
 }

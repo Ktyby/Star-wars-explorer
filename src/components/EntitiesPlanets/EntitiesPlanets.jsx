@@ -3,7 +3,7 @@ import TilePlanet from "../TilePlanet";
 import "./EntitiesPlanets.css";
 import convertNumberInToString from "../utils/convertNumberInToString";
 
-class EntitiesPlanets extends React.Component {
+class EntitiesPlanets extends React.PureComponent {
   constructor(props) {
     super(props);
   }

@@ -12,6 +12,8 @@ import loadMorePlanetsDataFailed from "../actions/morePlanetsData/loadMorePlanet
 import loadMorePlanetsDataSuccess from "../actions/morePlanetsData/loadMorePlanetsDataSuccess";
 import loadMoreStarshipsDataFailed from "../actions/moreStarshipsData/loadMoreStarshipsDataFailed";
 import loadMoreStarshipsDataSuccess from "../actions/moreStarshipsData/loadMoreStarshipsDataSuccess";
+import loadPeopleTilesDataFailed from "../actions/peopleTilesData/loadPeopleTilesDataFailed";
+import loadPeopleTilesDataSuccess from "../actions/peopleTilesData/loadPeopleTilesDataSuccess";
 import { API_URL } from "../../constants";
 
 export function* loadPeopleData() {
@@ -64,10 +66,37 @@ export function* loadMorePlanetsData(action) {
 export function* loadMoreStarshipsData(action) {
   console.log(action.page);
   try {
-    const data = yield call(() => axios.get(action.page).then((response) => response.data.results));
+    const data = yield call(() => axios.get(action.page).then((response) => response.data.results));  
     const nextPage = yield call(() => axios.get(action.page).then((response) => response.data.next));
     yield put(loadMoreStarshipsDataSuccess(data, nextPage)); 
   } catch (error) {
     yield put(loadMoreStarshipsDataFailed(error))
+  }
+}
+
+export function* loadPeopleTilesData(action) {
+  try {
+    const data = yield call(() => axios.get(action.url).then((response) => response.data))
+    .then((data) => {
+      console.log("function*loadPeopleTilesData -> data", data)
+      return data.films.map((element) => {
+        return axios.get(element)
+      });
+    })
+    .then((data) => {
+      console.log("function*loadPeopleTilesData -> data", data)
+      return data.species.map((element) => {
+        return axios.get(element)
+      });
+    })
+    .then((data) => {
+      console.log("function*loadPeopleTilesData -> data", data)
+      return data.vehicles.map((element) => {
+        return axios.get(element)
+      });
+    });
+    yield put(loadPeopleTilesDataSuccess(data)); 
+  } catch (error) {
+    yield put(loadPeopleTilesDataFailed(error))
   }
 }

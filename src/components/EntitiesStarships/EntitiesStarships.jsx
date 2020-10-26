@@ -3,7 +3,7 @@ import TileStarship from "../TileStarship";
 import "./EntitiesStarships.css";
 import convertNumberInToString from "../utils/convertNumberInToString";
 
-class EntitiesStarships extends React.Component {
+class EntitiesStarships extends React.PureComponent {
   constructor(props) {
     super(props);
   }

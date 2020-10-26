@@ -3,7 +3,7 @@ import "./TilePlanet.css";
 import propTypes from "./propTypes";
 import getInitials from "../utils/getInitials";
 
-class TilePlanet extends React.Component {
+class TilePlanet extends React.PureComponent {
   constructor(props) {
     super(props);
   }

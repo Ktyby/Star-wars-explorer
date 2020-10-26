@@ -3,7 +3,7 @@ import "./TileStarship.css";
 import propTypes from "./propTypes";
 import getInitials from "../utils/getInitials";
 
-class TileStarship extends React.Component {
+class TileStarship extends React.PureComponent {
   constructor(props) {
     super(props);
   }
