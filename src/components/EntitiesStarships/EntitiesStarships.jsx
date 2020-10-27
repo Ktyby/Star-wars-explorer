@@ -1,7 +1,7 @@
 import React from "react";
 import TileStarship from "../TileStarship";
 import "./EntitiesStarships.css";
-import convertNumberInToString from "../utils/convertNumberInToString";
+import PropTypes from "prop-types";
 
 class EntitiesStarships extends React.PureComponent {
   constructor(props) {
@@ -11,23 +11,10 @@ class EntitiesStarships extends React.PureComponent {
   componentDidMount() {
     this.props.loadStarshipsData();
   }
-  
-  convertToNumber = (value) => {
-    if (value.includes(",")) {
-      return +(value.split(",").join(""));
-    }
-
-    return value || +value;
-  }
 
   renderTiles = () => {
     return this.props.starships.map((element, index) => {
-      return <TileStarship 
-        name={element.name} 
-        cost={convertNumberInToString(element.cost_in_credits)} 
-        passengers={convertNumberInToString(this.convertToNumber(element.passengers))}
-        key={index}
-      />
+      return <TileStarship data={element} key={index}/>
     });
   }
 
@@ -42,5 +29,19 @@ class EntitiesStarships extends React.PureComponent {
     );
   }
 }
+
+EntitiesStarships.propTypes = {
+  loadStarshipsData: PropTypes.func,
+  loadMoreStarshipsData: PropTypes.func,
+  starships: PropTypes.array,
+  nextPage: PropTypes.string
+}
+
+EntitiesStarships.defaultProps = {
+  loadStarshipsData: null,
+  loadMoreStarshipsData: null,
+  starships: [],
+  nextPage: null
+};
 
 export default EntitiesStarships;

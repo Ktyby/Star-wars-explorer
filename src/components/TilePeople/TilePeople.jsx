@@ -1,35 +1,43 @@
 import React from "react";
 import "./TilePeople.css";
-import propTypes from "./propTypes";
 import getInitials from "../utils/getInitials";
-import Modal from "../Modal";
+import ModalPeople from "../ModalPeople";
+import PropTypes from "prop-types";
 
 class TilePeople extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      showModal: false
+      isModalShown: false
     }
   }
 
   handleShowModalClick = () => {
-    this.setState({showModal: !this.state.showModal});
+    this.setState({ isModalShown: !this.state.isModalShown || true });
   }
 
   render() {
+    const { data } = this.props;
+
     return (
       <li className="entities__item" onClick={this.handleShowModalClick}>
-        <div className="entities__initials">{getInitials(this.props.data.name)}</div>
-        <p className="entities__paragraph">Name: <span>{this.props.data.name}</span></p>
-        <p className="entities__paragraph">Birth year: <span>{this.props.data.birth_year}</span></p>
-        <p className="entities__paragraph">Gender: <span>{this.props.data.gender}</span></p>
-        { this.state.showModal && <Modal handleModal={this.handleShowModalClick} url={this.props.data.url}/> }
+        <div className="entities__initials">{getInitials(data.name)}</div>
+        <p className="entities__paragraph">Name: <span>{data.name}</span></p>
+        <p className="entities__paragraph">Birth year: <span>{data.birth_year}</span></p>
+        <p className="entities__paragraph">Gender: <span>{data.gender}</span></p>
+        {this.state.isModalShown && <ModalPeople url={data.url} isClosed={false}/>}
       </li>
     );
   }
 }
 
-TilePeople.propTypes = propTypes;
+TilePeople.propTypes = {
+  data: PropTypes.object,
+}
+
+TilePeople.defaultProps = {
+  data: {},
+};
 
 export default TilePeople;

@@ -14,6 +14,10 @@ import loadMoreStarshipsDataFailed from "../actions/moreStarshipsData/loadMoreSt
 import loadMoreStarshipsDataSuccess from "../actions/moreStarshipsData/loadMoreStarshipsDataSuccess";
 import loadPeopleTilesDataFailed from "../actions/peopleTilesData/loadPeopleTilesDataFailed";
 import loadPeopleTilesDataSuccess from "../actions/peopleTilesData/loadPeopleTilesDataSuccess";
+import loadPlanetsTilesDataFailed from "../actions/planetsTilesData/loadPlanetsTilesDataFailed";
+import loadPlanetsTilesDataSuccess from "../actions/planetsTilesData/loadPlanetsTilesDataSuccess";
+import loadStarshipsTilesDataFailed from "../actions/starshipsTilesData/loadStarshipsTilesDataFailed";
+import loadStarshipsTilesDataSuccess from "../actions/starshipsTilesData/loadStarshipsTilesDataSuccess";
 import { API_URL } from "../../constants";
 
 export function* loadPeopleData() {
@@ -64,7 +68,6 @@ export function* loadMorePlanetsData(action) {
 } 
 
 export function* loadMoreStarshipsData(action) {
-  console.log(action.page);
   try {
     const data = yield call(() => axios.get(action.page).then((response) => response.data.results));  
     const nextPage = yield call(() => axios.get(action.page).then((response) => response.data.next));
@@ -76,27 +79,74 @@ export function* loadMoreStarshipsData(action) {
 
 export function* loadPeopleTilesData(action) {
   try {
-    const data = yield call(() => axios.get(action.url).then((response) => response.data))
-    .then((data) => {
-      console.log("function*loadPeopleTilesData -> data", data)
-      return data.films.map((element) => {
-        return axios.get(element)
-      });
-    })
-    .then((data) => {
-      console.log("function*loadPeopleTilesData -> data", data)
-      return data.species.map((element) => {
-        return axios.get(element)
-      });
-    })
-    .then((data) => {
-      console.log("function*loadPeopleTilesData -> data", data)
-      return data.vehicles.map((element) => {
-        return axios.get(element)
-      });
+    const peopleData = yield call(() => axios.get(action.url).then((response) => response.data));
+
+    const filmsRequests = peopleData.films.map((element) => {
+      return axios.get(element).then((response) => response.data);
     });
-    yield put(loadPeopleTilesDataSuccess(data)); 
+
+    const speciesRequests = peopleData.species.map((element) => {
+      return axios.get(element).then((response) => response.data);
+    });
+
+    const vehiclesRequests = peopleData.vehicles.map((element) => {
+      return axios.get(element).then((response) => response.data);
+    });
+
+    peopleData.homeworld = yield call(() => axios.get(peopleData.homeworld).then((response) => response.data));
+
+    peopleData.films = yield call(() => Promise.all(filmsRequests).then((data) => data));
+
+    peopleData.species = yield call(() => Promise.all(speciesRequests).then((data) => data));
+
+    peopleData.vehicles = yield call(() => Promise.all(vehiclesRequests).then((data) => data));
+
+    yield put(loadPeopleTilesDataSuccess(peopleData)); 
   } catch (error) {
     yield put(loadPeopleTilesDataFailed(error))
+  }
+}
+
+export function* loadPlanetsTilesData(action) {
+  try {
+    const planetsData = yield call(() => axios.get(action.url).then((response) => response.data));
+
+    const filmsRequests = planetsData.films.map((element) => {
+      return axios.get(element).then((response) => response.data);
+    });
+
+    const residentsRequests = planetsData.residents.map((element) => {
+      return axios.get(element).then((response) => response.data);
+    });
+
+    planetsData.films = yield call(() => Promise.all(filmsRequests).then((data) => data));
+
+    planetsData.residents = yield call(() => Promise.all(residentsRequests).then((data) => data));
+
+    yield put(loadPlanetsTilesDataSuccess(planetsData)); 
+  } catch (error) {
+    yield put(loadPlanetsTilesDataFailed(error))
+  }
+}
+
+export function* loadStarshipsTilesData(action) {
+  try {
+    const starshipsData = yield call(() => axios.get(action.url).then((response) => response.data));
+
+    const filmsRequests = starshipsData.films.map((element) => {
+      return axios.get(element).then((response) => response.data);
+    });
+
+    const pilotsRequests = starshipsData.pilots.map((element) => {
+      return axios.get(element).then((response) => response.data);
+    });
+
+    starshipsData.films = yield call(() => Promise.all(filmsRequests).then((data) => data));
+
+    starshipsData.pilots = yield call(() => Promise.all(pilotsRequests).then((data) => data));
+
+    yield put(loadStarshipsTilesDataSuccess(starshipsData)); 
+  } catch (error) {
+    yield put(loadStarshipsTilesDataFailed(error))
   }
 }

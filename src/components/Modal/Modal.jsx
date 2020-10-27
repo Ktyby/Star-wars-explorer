@@ -1,40 +1,48 @@
 import React from "react";
 import "./Modal.css";
-import ModalPeople from "../ModalPeople";
+import PropTypes from "prop-types";
 
 class Modal extends React.PureComponent {
   constructor(props) {
     super(props);
     
     this.state = {
-      isOpen: true,
+      isClosed: this.props.isClosed
     }
   }
 
-  componentDidMount() {
-    this.props.loadPeopleTilesData(this.props.url);
-  }
-
-  closeModal = () => {
+  handleCloseButtonClick = () => {
     this.setState({
-      isOpen: false,
+      isClosed: !this.props.isClosed
     });
-  }
+  };
 
   render() {
-    if (!this.state.isOpen) return null;
+    if (this.state.isClosed) return null;
 
     return (
       <div className="modal">
         <div className="modal__wrapper">
-          <h2 className="modal__name">{this.props.tilesData.name}</h2>
-          <button className="modal__close-button" onClick={() => this.closeModal()}></button>
-          <ModalPeople data={this.props.tilesData}/>
+          <div className="modal__top-panel">
+            <h2 className="modal__name">{this.props.name}</h2>
+            <button className="modal__close-button" onClick={this.handleCloseButtonClick}></button>
+          </div>
+          {this.props.children}
         </div>
         <div className="modal__overlay"></div>
       </div>
     );
   }
 }
+
+Modal.propTypes = {
+  children: PropTypes.object,
+  name: PropTypes.string
+}
+
+Modal.defaultProps = {
+  children: {},
+  name: null
+};
 
 export default Modal;

@@ -1,7 +1,7 @@
 import React from "react";
 import TilePlanet from "../TilePlanet";
+import PropTypes from "prop-types";
 import "./EntitiesPlanets.css";
-import convertNumberInToString from "../utils/convertNumberInToString";
 
 class EntitiesPlanets extends React.PureComponent {
   constructor(props) {
@@ -14,7 +14,7 @@ class EntitiesPlanets extends React.PureComponent {
 
   renderTiles = () => {
     return this.props.planets.map((element, index) => {
-      return <TilePlanet name={element.name} population={convertNumberInToString(element.population)} key={index}/>
+      return <TilePlanet data={element} key={index}/>
     });
   }
 
@@ -29,5 +29,19 @@ class EntitiesPlanets extends React.PureComponent {
     );
   }
 }
+
+EntitiesPlanets.propTypes = {
+  loadPlanetsData: PropTypes.func,
+  loadMorePlanetsData: PropTypes.func,
+  planets: PropTypes.array,
+  nextPage: PropTypes.string
+}
+
+EntitiesPlanets.defaultProps = {
+  loadPlanetsData: null,
+  loadMorePlanetsData: null,
+  planets: [],
+  nextPage: null
+};
 
 export default EntitiesPlanets;

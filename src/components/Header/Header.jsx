@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./img/logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Header extends React.PureComponent {
   constructor(props) {
@@ -29,5 +30,17 @@ class Header extends React.PureComponent {
     );
   }
 }
+
+Header.propTypes = {
+  loadPeopleData: PropTypes.func,
+  loadPlanetsData: PropTypes.func,
+  loadStarshipsData: PropTypes.func,
+}
+
+Header.defaultProps = {
+  loadPeopleData: null,
+  loadPlanetsData: null,
+  loadStarshipsData: null,
+};
 
 export default Header;

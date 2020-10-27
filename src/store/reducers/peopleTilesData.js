@@ -1,7 +1,7 @@
 import initialState from "../initialState";
 import { LOAD_PEOPLE_TILES_DATA_SUCCESS } from "../constants";
 
-const tilesData = (state = initialState.tilesData, action) => {
+const peopleTilesData = (state = initialState.tilesData, action) => {
   switch (action.type) {
     case LOAD_PEOPLE_TILES_DATA_SUCCESS:
       return { ...state,
@@ -12,4 +12,4 @@ const tilesData = (state = initialState.tilesData, action) => {
   }
 }
 
-export default tilesData;
+export default peopleTilesData;
