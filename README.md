@@ -32,4 +32,11 @@
   ## Installing
   For using this project, you need downloading this project from react. The launch is being played from index.html from /dist derictory. 
   
+  ## Development
+  1. Clone Repository `git clone`
+  2. Install npm `npm install`
+  3. Run project `npm start`
   
+  ## Support
+  
+  When you have suggestions, you can open issues on github.
