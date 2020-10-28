@@ -4,20 +4,20 @@
   Star-wars-explorer is application, which  nedeed for getting information about universe's **STAR WARS**. Here You may detailed information about Characters, Planets and Starships. For used this app, You need download this repository from GitHub.
   
   In this Project, We used technologies such us:
- -React
- -Redux
- -Saga
- -Axios
- -React-Router-dom
+ - React
+ - Redux
+ - Saga
+ - Axios
+ - React-Router-dom
  For develop, We used Webpack, ESlint, Babel, prettier.
  
   This app haves six modules:
-  -App - main module full project.
-  -Header - module, which store navigation-panel.
-  -Main - it needed for working router.
-  -Entities - store entities.
-  -Tile - store brief information about characters/planet/starship.
-  -Modal - opens when you click on Tile.
+  - App - main module full project.
+  - Header - module, which store navigation-panel.
+  - Main - it needed for working router.
+  - Entities - store entities.
+  - Tile - store brief information about characters/planet/starship.
+  - Modal - opens when you click on Tile.
   
   ## Using
   
