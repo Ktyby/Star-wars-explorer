@@ -1,8 +1,31 @@
 {
   "extends": [
-    "plugin:react/recommended"
+    "airbnb-base",
+    "prettier"
   ],
-  "plugins": ["react"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "no-unused-vars": "warn",
+    "consistent-return": "warn",
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "tsx": "never"
+      }
+   ]
+  },
   "parserOptions": {
     "ecmaVersion": 6,
     "ecmaFeatures": {
@@ -13,8 +36,5 @@
     "browser": true,
     "jest": true
   },
-	"parser": "babel-eslint",
-	"settings": {
-    "import/resolver": "webpack"
-	}
+  "parser": "babel-eslint"
 }

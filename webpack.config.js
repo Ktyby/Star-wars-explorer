@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+// eslint-disable-next-line import/no-unresolved
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,7 +19,7 @@ module.exports = {
 			},
 			{
 				test: /\.css/,
-				use: [ 'style-loader', 'css-loader' ]
+				use: ['style-loader', 'css-loader'],
 			},
 			{
 				test: /\.(png|jpe?g|gif)$/i,

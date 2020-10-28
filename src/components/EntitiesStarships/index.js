@@ -1,16 +1,16 @@
-import { connect } from "react-redux";
-import EntitiesStarships from "./EntitiesStarships";
-import loadStarshipsData from "../../store/actions/starshipsData/loadStarshipsData";
-import loadMoreStarshipsData from "../../store/actions/moreStarshipsData/loadMoreStarshipsData";
+import { connect } from 'react-redux';
+import EntitiesStarships from './EntitiesStarships';
+import loadStarshipsData from '../../store/actions/starshipsData/loadStarshipsData';
+import loadMoreStarshipsData from '../../store/actions/moreStarshipsData/loadMoreStarshipsData';
 
 const mapStateToProps = (state) => ({
-  starships: state.starships.data,
-  nextPage: state.starships.nextPage
+	starships: state.starships.data,
+	nextPage: state.starships.nextPage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadStarshipsData: () => dispatch(loadStarshipsData()),
-  loadMoreStarshipsData: () => dispatch(loadMoreStarshipsData()),
+	loadStarshipsData: () => dispatch(loadStarshipsData()),
+	loadMoreStarshipsData: (nextPage) => dispatch(loadMoreStarshipsData(nextPage)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EntitiesStarships);

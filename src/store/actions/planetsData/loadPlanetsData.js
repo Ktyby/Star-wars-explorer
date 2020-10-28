@@ -1,7 +1,7 @@
-import { LOAD_PLANETS_DATA } from "../../constants";
+import { LOAD_PLANETS_DATA } from '../../constants';
 
 const loadPlanetsData = () => ({
-  type: LOAD_PLANETS_DATA,
-});  
+	type: LOAD_PLANETS_DATA,
+});
 
 export default loadPlanetsData;

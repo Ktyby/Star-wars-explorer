@@ -1,11 +1,8 @@
-import { API_URL } from "../../../constants";
-import { LOAD_MORE_PEOPLE_DATA } from "../../constants";
+import { LOAD_MORE_PEOPLE_DATA } from '../../constants';
 
-let pageNumber = 1;
-
-const loadMorePeopleData = () => ({
-  type: LOAD_MORE_PEOPLE_DATA,
-  page: `${API_URL}/people/?page=${++pageNumber}`,
-});  
+const loadMorePeopleData = (page) => ({
+	type: LOAD_MORE_PEOPLE_DATA,
+	page,
+});
 
 export default loadMorePeopleData;

@@ -1,14 +1,14 @@
 export default {
-  people: {
-    data: []
-  },
-  planets: {
-    data: []
-  },
-  starships: {
-    data: []
-  },
-  tilesData: {
-    data: []
-  }
-}
+	people: {
+		data: [],
+	},
+	planets: {
+		data: [],
+	},
+	starships: {
+		data: [],
+	},
+	tilesData: {
+		data: [],
+	},
+};

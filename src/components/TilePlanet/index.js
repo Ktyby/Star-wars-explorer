@@ -1,1 +1,1 @@
-export { default } from "./TilePlanet";
+export { default } from './TilePlanet';

@@ -1,1 +1,1 @@
-export { default } from "./TilePeople";
+export { default } from './TilePeople';

@@ -1,8 +1,9 @@
-import { LOAD_PLANETS_DATA_SUCCESS } from "../../constants";
+import { LOAD_PLANETS_DATA_SUCCESS } from '../../constants';
 
-const loadPlanetsDataSuccess = (data) => ({
-  type: LOAD_PLANETS_DATA_SUCCESS,
-  payload: data,
-});  
+const loadPlanetsDataSuccess = (data, nextPage) => ({
+	type: LOAD_PLANETS_DATA_SUCCESS,
+	payload: data,
+	nextPage,
+});
 
 export default loadPlanetsDataSuccess;
