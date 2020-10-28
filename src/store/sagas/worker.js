@@ -85,7 +85,7 @@ export function* loadPeopleTilesData(action) {
       return axios.get(element).then((response) => response.data);
     });
 
-    const speciesRequests = peopleData.species.map((element) => {
+    const starshipsRequests = peopleData.starships.map((element) => {
       return axios.get(element).then((response) => response.data);
     });
 
@@ -97,9 +97,10 @@ export function* loadPeopleTilesData(action) {
 
     peopleData.films = yield call(() => Promise.all(filmsRequests).then((data) => data));
 
-    peopleData.species = yield call(() => Promise.all(speciesRequests).then((data) => data));
+    peopleData.starships = yield call(() => Promise.all(starshipsRequests).then((data) => data));
 
     peopleData.vehicles = yield call(() => Promise.all(vehiclesRequests).then((data) => data));
+
 
     yield put(loadPeopleTilesDataSuccess(peopleData)); 
   } catch (error) {

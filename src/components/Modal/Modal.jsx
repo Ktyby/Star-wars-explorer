@@ -1,31 +1,23 @@
+import PropTypes from "prop-types";
 import React from "react";
 import "./Modal.css";
-import PropTypes from "prop-types";
 
 class Modal extends React.PureComponent {
   constructor(props) {
     super(props);
-    
-    this.state = {
-      isClosed: this.props.isClosed
-    }
   }
 
   handleCloseButtonClick = () => {
-    this.setState({
-      isClosed: !this.props.isClosed
-    });
+    this.props.onCloseButtonClick();
   };
 
-  render() {
-    if (this.state.isClosed) return null;
-
+  render() {    
     return (
       <div className="modal">
         <div className="modal__wrapper">
           <div className="modal__top-panel">
             <h2 className="modal__name">{this.props.name}</h2>
-            <button className="modal__close-button" onClick={this.handleCloseButtonClick}></button>
+            <button className="modal__close-button" onClick={() => this.handleCloseButtonClick()}></button>
           </div>
           {this.props.children}
         </div>
@@ -36,11 +28,13 @@ class Modal extends React.PureComponent {
 }
 
 Modal.propTypes = {
+  onCloseButtonClick: PropTypes.func,
   children: PropTypes.object,
   name: PropTypes.string
 }
 
 Modal.defaultProps = {
+  onCloseButtonClick: null,
   children: {},
   name: null
 };

@@ -1,9 +1,9 @@
+import PropTypes from "prop-types";
 import React from "react";
-import "./TileStarship.css";
-import getInitials from "../utils/getInitials";
 import ModalStarships from "../ModalStarships";
 import convertNumberInToString from "../utils/convertNumberInToString";
-import PropTypes from "prop-types";
+import getInitials from "../utils/getInitials";
+import "./TileStarship.css";
 
 class TileStarship extends React.PureComponent {
   constructor(props) {
@@ -29,7 +29,7 @@ class TileStarship extends React.PureComponent {
         <p className="entities__paragraph">
           Passengers: <span>{convertNumberInToString(data.passengers.replace(",", "") || +data.passengers.replace(",", ""))}</span>
         </p>
-        {this.state.isModalShown && <ModalStarships url={data.url} />}
+        {this.state.isModalShown && <ModalStarships url={data.url} onCloseButtonClick={() => {this.setState({ isModalShown: false })}}/>}
       </li>
     );
   }

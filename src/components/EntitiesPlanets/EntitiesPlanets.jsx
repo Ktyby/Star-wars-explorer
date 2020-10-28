@@ -1,6 +1,6 @@
+import PropTypes from "prop-types";
 import React from "react";
 import TilePlanet from "../TilePlanet";
-import PropTypes from "prop-types";
 import "./EntitiesPlanets.css";
 
 class EntitiesPlanets extends React.PureComponent {
@@ -41,7 +41,7 @@ EntitiesPlanets.defaultProps = {
   loadPlanetsData: null,
   loadMorePlanetsData: null,
   planets: [],
-  nextPage: null
+  nextPage: ""
 };
 
 export default EntitiesPlanets;

@@ -1,7 +1,6 @@
+import PropTypes from "prop-types";
 import React from "react";
 import TilePeople from "../TilePeople";
-import PropTypes from "prop-types";
-
 import "./EntitiesPeople.css";
 
 class EntitiesPeople extends React.PureComponent {
@@ -42,7 +41,7 @@ EntitiesPeople.defaultProps = {
   loadPeopleData: null,
   loadMorePeopleData: null,
   people: [],
-  nextPage: null
+  nextPage: ""
 };
 
 

@@ -1,7 +1,7 @@
+import PropTypes from "prop-types";
 import React from "react";
 import TileStarship from "../TileStarship";
 import "./EntitiesStarships.css";
-import PropTypes from "prop-types";
 
 class EntitiesStarships extends React.PureComponent {
   constructor(props) {
@@ -41,7 +41,7 @@ EntitiesStarships.defaultProps = {
   loadStarshipsData: null,
   loadMoreStarshipsData: null,
   starships: [],
-  nextPage: null
+  nextPage: ""
 };
 
 export default EntitiesStarships;

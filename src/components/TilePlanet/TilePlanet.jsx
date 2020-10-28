@@ -1,9 +1,9 @@
-import React from "react";
-import "./TilePlanet.css";
-import getInitials from "../utils/getInitials";
-import convertNumberInToString from "../utils/convertNumberInToString";
-import ModalPlanets from "../ModalPlanets";
 import PropTypes from "prop-types";
+import React from "react";
+import ModalPlanets from "../ModalPlanets";
+import convertNumberInToString from "../utils/convertNumberInToString";
+import getInitials from "../utils/getInitials";
+import "./TilePlanet.css";
 
 class TilePlanet extends React.PureComponent {
   constructor(props) {
@@ -26,7 +26,7 @@ class TilePlanet extends React.PureComponent {
         <div className="entities__initials">{getInitials(data.name)}</div>
         <p className="entities__paragraph">Name: <span>{data.name}</span></p>
         <p className="entities__paragraph">population: <span>{convertNumberInToString(data.population)}</span></p>
-        {this.state.isModalShown && <ModalPlanets url={data.url} />}
+        {this.state.isModalShown && <ModalPlanets url={data.url} onCloseButtonClick={() => {this.setState({ isModalShown: false })}}/>}
       </li>
     );
   }

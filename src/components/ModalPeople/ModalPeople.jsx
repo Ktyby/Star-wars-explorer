@@ -1,16 +1,20 @@
+import PropTypes from "prop-types";
 import React from "react";
-import "./ModalPeople.css";
+import { PLANETS_API_URL, STARSHIPS_API_URL } from "../../constants";
 import Modal from "../Modal";
 import ModalPlanets from "../ModalPlanets";
-import PropTypes from "prop-types";
+import ModalStarships from "../ModalStarships";
+import renderLinks from "../utils/renderLinks";
+import "./ModalPeople.css";
 
 class ModalPeople extends React.PureComponent {
   constructor(props) {
     super(props);
     
     this.state = {
-      isShownModal: false,
-      url: null
+      url: null,
+      isShowPlanetsModal: false,
+      isShowStarshipsModal: false
     }
   }
 
@@ -18,31 +22,21 @@ class ModalPeople extends React.PureComponent {
     this.props.loadPeopleTilesData(this.props.url);
   }
 
-  renderLinks = (links) => {
-    if (!links) return;
-
-    return links.map((element, index) => {
-      return <a className="modal__link" key={index}>{element.name || element.title}</a>
-    });
-  }
-
-  renderParagraph = (paragraphs) => {
-    if (!paragraphs) return;
-
-    return paragraphs.map((element, index) => {
-      return <p className="modal__paragraph" key={index}>{element.name || element.title}</p>
-    });
-  }
-
-  handleShowModalClick = () => {
-    this.setState({isShownModal: true});
+  setStateDependingOnUrl = (url) => {
+    if (url.includes(PLANETS_API_URL)) {
+      this.setState({ isShowPlanetsModal: true });
+    } else if (url.includes(STARSHIPS_API_URL)) {
+      this.setState({ 
+        isShowStarshipsModal: true,
+        url
+      });
+    }
   }
 
   render() {
     const { peopleTilesData } = this.props;
-
     return (
-      <Modal name={peopleTilesData.name}  isClosed={this.props.isClosed}>
+      <Modal name={peopleTilesData.name} onCloseButtonClick={this.props.onCloseButtonClick}>
         <div className="modal__content">
           <div className="modal__information">
             <div className="modal__characteristic">
@@ -64,24 +58,32 @@ class ModalPeople extends React.PureComponent {
                 <h3 className="modal__title">Home world</h3>
                 {peopleTilesData.homeworld && <a 
                     className="modal__link" 
-                    href="#"
-                    onClick={this.handleShowModalClick}>
+                    onClick={() => this.setStateDependingOnUrl(peopleTilesData.homeworld.url)}>
                     {peopleTilesData.homeworld.name}
                   </a>
                 }
-                {this.state.isShownModal && <ModalPlanets url={peopleTilesData.homeworld.url}/>}
+                {this.state.isShowPlanetsModal &&
+                  <ModalPlanets 
+                    url={peopleTilesData.homeworld.url} 
+                    onCloseButtonClick={() => this.props.onCloseButtonClick()}
+                  />}
               </div>
               <div className="modal__relation">
                 <h3 className="modal__title">Films</h3>
-                {this.renderParagraph(peopleTilesData.films)}
+                {renderLinks(peopleTilesData.films, this.setStateDependingOnUrl)}
               </div>
               <div className="modal__relation">
                 <h3 className="modal__title">Vehicles</h3>
-                {this.renderParagraph(peopleTilesData.vehicles)}
+                {renderLinks(peopleTilesData.vehicles, this.setStateDependingOnUrl)}
               </div>
               <div className="modal__relation">
                 <h3 className="modal__title">Starships</h3>
-                {this.renderLinks(peopleTilesData.starships)}
+                {renderLinks(peopleTilesData.starships, this.setStateDependingOnUrl)}
+                {this.state.isShowStarshipsModal && 
+                  <ModalStarships 
+                    url={this.state.url} 
+                    onCloseButtonClick={() => () => this.props.onCloseButtonClick()}
+                  />}
               </div>
             </div>
           </div>

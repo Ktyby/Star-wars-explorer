@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import EntitiesPeople from "../EntitiesPeople";
 import EntitiesPlanets from "../EntitiesPlanets";
 import EntitiesStarships from "../EntitiesStarships";

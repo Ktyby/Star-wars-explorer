@@ -1,30 +1,41 @@
-import React from "react";
-import "./ModalStarships.css";
-import Modal from "../Modal";
 import PropTypes from "prop-types";
+import React from "react";
+import { PEOPLE_API_URL } from "../../constants";
+import Modal from "../Modal";
+import ModalPeople from "../ModalPeople";
+import renderLinks from "../utils/renderLinks";
+import "./ModalStarships.css";
 
 class ModalStarships extends React.PureComponent {
   constructor(props) {
     super(props);
+    
+    this.state = {
+      isShowPeopleModal: false,
+      url: null
+    }
+  }
+
+  setStateDependingOnUrl = (url) => {
+    if (url.includes(PEOPLE_API_URL)) {
+      this.setState({ 
+        isShowPeopleModal: true,
+        url
+      });
+    }
   }
 
   componentDidMount() {
     this.props.loadStarshipsTilesData(this.props.url);
   }
 
-  renderLinks = (links) => {
-    if (!links) return;
-
-    return links.map((element, index) => {
-      return <a className="modal__link" href={element.url} key={index}>{element.name || element.title}</a>
-    });
-  }
-
   render() {
     const { starshipsTilesData } = this.props;
 
+    console.log(this.state.url)
+
     return (
-      <Modal name={starshipsTilesData.name}>
+      <Modal name={starshipsTilesData.name} onCloseButtonClick={this.props.onCloseButtonClick}>
         <div className="modal__content">
           <div className="modal__information">
             <div className="modal__characteristic">
@@ -46,11 +57,17 @@ class ModalStarships extends React.PureComponent {
             <div className="modal__relations">
               <div className="modal__relation">
                 <h3 className="modal__title">Films</h3>
-                {this.renderLinks(starshipsTilesData.films)}
+                {renderLinks(starshipsTilesData.films, this.setStateDependingOnUrl)}
               </div>
               <div className="modal__relation">
                 <h3 className="modal__title">Pilots</h3>
-                {this.renderLinks(starshipsTilesData.pilots)}
+                {renderLinks(starshipsTilesData.pilots, this.setStateDependingOnUrl)}
+                {this.state.isShowPeopleModal && 
+                  <ModalPeople
+                    url={this.state.url}
+                    onCloseButtonClick={() => () => this.props.onCloseButtonClick()}
+                  />
+                }
               </div>
             </div>
           </div>

@@ -1,32 +1,39 @@
-import React from "react";
-import "./ModalPlanets.css";
-import Modal from "../Modal";
 import PropTypes from "prop-types";
+import React from "react";
+import { PEOPLE_API_URL } from "../../constants";
+import Modal from "../Modal";
+import ModalPeople from "../ModalPeople";
+import renderLinks from "../utils/renderLinks";
+import "./ModalPlanets.css";
 
 class ModalPlanets extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isShowPeopleModal: false,
+      url: null
+    }
+  }
+
+  setStateDependingOnUrl = (url) => {
+    if (url.includes(PEOPLE_API_URL)) {
+      this.setState({ 
+        isShowPeopleModal: true,
+        url
+      });
+    } 
   }
 
   componentDidMount() {
     this.props.loadPlanetsTilesData(this.props.url);
   }
 
-  renderLinks = (links) => {
-    if (!links) return;
-
-    return links.map((element, index) => {
-      return <a className="modal__link" href={element.url} key={index}>{element.name || element.title}</a>
-    });
-  }
-
   render() {
     const { planetsTilesData } = this.props;
-
-    console.log(this.props)
-
+    
     return (
-      <Modal name={planetsTilesData.name}>
+      <Modal name={planetsTilesData.name} onCloseButtonClick={this.props.onCloseButtonClick}>
         <div className="modal__content">
           <div className="modal__information">
             <div className="modal__characteristic">
@@ -45,11 +52,16 @@ class ModalPlanets extends React.PureComponent {
             <div className="modal__relations">
               <div className="modal__relation">
                 <h3 className="modal__title">Residents</h3>
-                {this.renderLinks(planetsTilesData.residents)}
+                {renderLinks(planetsTilesData.residents, this.setStateDependingOnUrl)}
+                {this.state.isShowPeopleModal && 
+                  <ModalPeople
+                    url={this.state.url}
+                    onCloseButtonClick={() => () => this.props.onCloseButtonClick()}
+                  />}
               </div>
               <div className="modal__relation">
                 <h3 className="modal__title">Films</h3>
-                {this.renderLinks(planetsTilesData.films)}
+                {renderLinks(planetsTilesData.films, this.setStateDependingOnUrl)}
               </div>
             </div>
           </div>
