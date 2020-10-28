@@ -27,7 +27,9 @@
   User can interact with Header, Entities, Tiles, Modal, when he clicked on them.
   
   ## Features
-  This Project is completely unique. It provides ability getting full information about universe's **STAR WARS**. It haves awesome design.
+  This Project is completely unique. It provides ability getting full information about universe's **STAR WARS**. It haves awesome design. This project use third-party free API software.
+  
+  [API](https://swapi.dev/)
   
   ## Installing
   For using this project, you need downloading this project from react. The launch is being played from index.html from /dist derictory. 
@@ -38,5 +40,4 @@
   3. Run project `npm start`
   
   ## Support
-  
   When you have suggestions, you can open issues on github.
