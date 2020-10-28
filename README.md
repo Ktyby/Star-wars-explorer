@@ -9,6 +9,7 @@
  - Saga
  - Axios
  - React-Router-dom
+ 
  For develop, We used Webpack, ESlint, Babel, prettier.
  
   This app haves six modules:
